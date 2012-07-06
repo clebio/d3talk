@@ -1,8 +1,26 @@
 body {
   overflow: hidden;
   margin: 0;
-  font: 36px "Tahoma";  
+  font: 1em "Tahoma";  
   padding-left:1em;
+}
+
+h1 {
+    font-size: 1em;    
+}
+
+h2 {
+    font-size: smaller;
+    color: grey;
+}
+
+p {
+    
+}
+
+
+#graph {
+    border: 1px solid grey;
 }
 
 svg {
@@ -117,7 +135,7 @@ line {
 
 .xaxis{
     fill:none;
-    stroke:gray;
+    Stroke:Gray;
 }
 
 .yaxis{

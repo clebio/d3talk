@@ -1,10 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
-<head>
-        <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+    <head>
         <link type="text/css" rel="stylesheet" href="style.css">
-</head>
-<body style="padding:1em">
-    <h1>nothing to see here</h1>
-</body>
-
+        <script type="text/javascript" src="http://localhost:8000/d3/d3.v2.js"></script>
+        <title>egovis</title>
+    </head>
+    <body>
+      <h1>D3 Sandbox</h1>
+      <p>Things to try:</p>
+      <ul>
+	<li>In Google Chrome: 'Control-Shift-I', then 'Esc' for Console</li>
+	<li>> d3.json('http://localhost:8000/data/pythonkc_hackr_event.json', function(data){d=data})</li>
+	<li>Explore the <a href="http://www.meetup.com/meetup_api/docs/events/">Meetup API</a></li>
+      </ul>
+      <div id="graph">
+      </div>
+    </body>
 </html>

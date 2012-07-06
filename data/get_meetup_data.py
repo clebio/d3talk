@@ -21,7 +21,8 @@ def get_data(endpoint, params):
         print url%offset
     return data
     
-apiKey = "6c7f272b103a6f33193925f2547a1c"
+apiKey = ""
+with open('apiKey.txt') as x: apiKey = x.read().rstrip()
 
 params = {
     "key": apiKey,
@@ -52,7 +53,14 @@ for person in people:
         if profile['photo_url'] != '':
             nodes.append({
                     "name": profile['name'],
-                    "photo_url": profile['photo_url']
+                    "photo_url": profile['photo_url'],
+                    'bio': profile['bio'],
+                    'lat': profile['lat'],
+                    'lon': profile['lon'],
+                    'city': profile['city'],
+                    'state': profile['state'],
+                    'profileLink': profile['link'],
+                    'topics': profile['topics'] # list: { 'id', 'name', 'urlkey'}
                     })
         
 json.dump(profiles, open('profiles.json','w'))
