@@ -21,10 +21,13 @@ def get_data(endpoint, params):
         print url%offset
     return data
     
+apiKey = "6c7f272b103a6f33193925f2547a1c"
 
 params = {
-    "key": "3f243d3bf32743c363b2d2e3c75d2b",
-    "event_id": "43972672", # this is the event id for the intro to d3 talk
+    "key": apiKey,
+#    "event_id": "60617252", # 12 Factors for Python
+    "event_id": "62339552", # Beginners Python Workshop
+#    "group_id": "1909691", # Python KC
 }
 
 # get first page of members
@@ -40,23 +43,23 @@ profiles = []
 for person in people:
     if person['response'] == "yes":
         params = {
-            "key": "3f243d3bf32743c363b2d2e3c75d2b",
-            "member_id": person['member_id'],
-        }
+            "key": apiKey,
+            "member_id": person['id'],
+            }
         url = 'https://api.meetup.com/members?' 
         profile = get_data(url, params)[0]
         profiles.append(profile)
         if profile['photo_url'] != '':
             nodes.append({
-                "name": profile['name'],
-                "photo_url": profile['photo_url']
-            })
-
+                    "name": profile['name'],
+                    "photo_url": profile['photo_url']
+                    })
+        
 json.dump(profiles, open('profiles.json','w'))
 
 json.dump(
     {
         "nodes": nodes,
     },
-    open('hackr_event.json','w')
+    open('pythonkc_hackr_event.json','w')
 )
