@@ -35,31 +35,8 @@ d3.json(
 
 
 	node.on("mouseover", function(d) {
-	    d3.select(this).append('svg:rect')
-		.attr('class', 'labels')
-		.attr('fill', 'grey')
-		.attr('opacity', .8)
-		.attr('x', 100)
-		.attr('width', 300 )
-		.attr('height', 100);
-
-	    var ts = d3.select(this)
-		.append("svg:text")
-		.attr('class', 'labels');
-	    ts.append("svg:tspan")
-	    	.attr("id", "name")
-		.attr('x', '100')
-		.attr('width', 300)
-		.attr('dy', '1em')
-		.text(function(d) {return d.name});
-	    ts.append("svg:tspan")
-		.attr("id", "bio")
-		.attr('x', '100')
-		.attr('dy', '1em')
-		.attr('width', 300)
-		.attr('text-wrap', 'normal')
-		.text(function(d) {return d.bio});
-	})
+	    insertLabels(d, this);
+	});
 
 	node.on("mouseout", function(d) {
 	    d3.selectAll(".labels")
