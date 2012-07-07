@@ -1,11 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
     <head>
-        <link type="text/css" rel="stylesheet" href="style.css">
+        <link type="text/css" rel="stylesheet" href="css/style.css">
         <script type="text/javascript" src="http://localhost:8000/d3/d3.v2.js"></script>
+        <script type="text/javascript" src="http://localhost:8000/js/jquery-1.7.2.min.js"></script>
         <title>egovis</title>
 	<!--TODO:
 	  - separation of semantics: move variable values and local URLs into central config
+	  - move as much logic out of JS into Python code as possible 
+	  - integrate jQuery
 	-->
     </head>
     <body>
@@ -15,6 +18,6 @@
       <div id="graph">
       </div>
 
-      <script type="text/javascript" src="http://localhost:8000/meetupVis.js"></script>
+      <script type="text/javascript" src="http://localhost:8000/js/meetupvis.js"></script>
     </body>
 </html>

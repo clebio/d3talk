@@ -2,6 +2,9 @@
 ## Overview
 This is an extension of the 'egovis' slide from [Mike Dewar's talk on D3][dcon]. We use the [Meetup API][meet] and Mike Bostock's [D3 library][d3]. 
 
+##Approach
+Your Meetup API key goes in `data/apiKey.txt` and is excluded from versioning via `.gitignore`.  
+
 ## From Mike's github [repo][dewar]: 
 >a talk aimed to try and get data scientists over that first hump of d3's learing curve and into the beautiful vista beyond...
 >

@@ -35,7 +35,7 @@ params = {
 endpoint = 'https://api.meetup.com/rsvps?' 
 people = get_data(endpoint, params)
 
-json.dump(people, open('people.json','w'))
+json.dump(people, open('../json/people.json','w'))
 
 nodes = []
 
@@ -50,8 +50,8 @@ for person in people:
         url = 'https://api.meetup.com/members?' 
         profile = get_data(url, params)[0]
         profiles.append(profile)
-        if profile['photo_url'] != '':
-            nodes.append({
+        if profile['photo_nodes'] != '':
+            url.append({
                     "name": profile['name'],
                     "photo_url": profile['photo_url'],
                     'bio': profile['bio'],
@@ -63,11 +63,11 @@ for person in people:
                     'topics': profile['topics'] # list: { 'id', 'name', 'urlkey'}
                     })
         
-json.dump(profiles, open('profiles.json','w'))
+json.dump(profiles, open('../json/profiles.json','w'))
 
 json.dump(
     {
         "nodes": nodes,
     },
-    open('pythonkc_hackr_event.json','w')
+    open('../json/pythonkc_hackr_event.json','w')
 )

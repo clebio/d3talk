@@ -36,4 +36,4 @@ params = {
 endpoint = 'https://api.meetup.com/2/events?' 
 meetups = get_data(endpoint, params)
 meetups.sort(key=itemgetter('time'))
-json.dump(meetups, open("meetup_history.json",'w'))
+json.dump(meetups, open("../json/meetup_history.json",'w'))

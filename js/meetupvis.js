@@ -31,17 +31,15 @@ d3.json(
             .attr('xlink:href', function(d){return d.photo_url})                    
 
 	node.on("mouseover", function(d) {
-	    d3.select(this)
+	    var ts = d3.select(this)
 		.append("svg:text")
-		.attr("id", "name")
 		.attr("class", "labels")
+	    ts.append("svg:tspan")
+	    	.attr("id", "name")
 		.text(function(d) {return d.name});
-	    d3.select(this)
-		.append("svg:text")
+	    ts.append("svg:tspan")
 		.attr("id", "bio")
-		.attr("class", "labels")
 		.text(function(d) {return d.bio});
-
 	})
 
 	node.on("mouseout", function(d) {
