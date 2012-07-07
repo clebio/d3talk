@@ -1,3 +1,4 @@
+(function(){
 var w = 900, h = 650,
 fill = d3.scale.category20();
 
@@ -5,7 +6,7 @@ vis = d3.select("#graph")
     .append("svg")
 
 d3.json(
-    'http://localhost:8000/data/pythonkc_hackr_event.json', 
+    'http://localhost:8000/json/pythonkc_hackr_event.json', 
     function(json){
         
         var force = d3.layout.force()
@@ -22,23 +23,41 @@ d3.json(
             .attr("x", function(d) { return d.x; })
             .attr("y", function(d) { return d.y; })
             .call(force.drag);
-        
-        node.append("svg:image")
+
+
+	node.append("svg:image")
             .attr('x', 0)
             .attr('y', 0)
             .attr('width', 100)
             .attr('height', 100)
+	    .attr('float', 'left')
             .attr('xlink:href', function(d){return d.photo_url})                    
 
+
 	node.on("mouseover", function(d) {
+	    d3.select(this).append('svg:rect')
+		.attr('class', 'labels')
+		.attr('fill', 'grey')
+		.attr('opacity', .8)
+		.attr('x', 100)
+		.attr('width', 300 )
+		.attr('height', 100);
+
 	    var ts = d3.select(this)
 		.append("svg:text")
-		.attr("class", "labels")
+		.attr('class', 'labels');
 	    ts.append("svg:tspan")
 	    	.attr("id", "name")
+		.attr('x', '100')
+		.attr('width', 300)
+		.attr('dy', '1em')
 		.text(function(d) {return d.name});
 	    ts.append("svg:tspan")
 		.attr("id", "bio")
+		.attr('x', '100')
+		.attr('dy', '1em')
+		.attr('width', 300)
+		.attr('text-wrap', 'normal')
 		.text(function(d) {return d.bio});
 	})
 
@@ -63,3 +82,4 @@ d3.json(
         });
     })
 
+})();

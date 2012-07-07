@@ -40,10 +40,6 @@ svg {
     font-size:10px;
 }
 
-rect {
-  fill: none;
-  pointer-events: all;
-}
 
 line {
   stroke: #000;
