@@ -1,16 +1,16 @@
 (function(){
 var w = 900, h = 650,
-fill = d3.scale.category20();
+fill = d3.scale.ordinal();
 
 vis = d3.select("#graph")
-    .append("svg")
+	.append("svg");
 
 d3.json(
     'http://localhost:8000/json/pythonkc_hackr_event.json', 
     function(json){
         
         var force = d3.layout.force()
-            .charge(-550)
+            .charge(-1000)
             .nodes(json.nodes)
             .size([w, h])
             .start();

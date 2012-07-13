@@ -72,11 +72,6 @@ line {
   left: 140px;
 }
 
-rect {
-  fill: none;
-  pointer-events: all;
-}
-
 pre {
   font-size: 30px;
 }

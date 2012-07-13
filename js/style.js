@@ -3,7 +3,7 @@ function insertLabels(data, element) {
 	this.d = data;
 
     // this is a hack to get the selected element front-most (highest z-index)
-    // svg elements don't, apparently have a z-index, just the order of creation.
+    // svg elements don't, apparently, have a z-index, just the order of creation.
     n = e;
     p = e.parentNode;
     p.removeChild(e);
