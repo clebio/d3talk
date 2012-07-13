@@ -5,15 +5,7 @@ This is an extension of the 'egovis' slide from [Mike Dewar's talk on D3][dcon].
 ## Approach
 Your Meetup API key goes in `data/apiKey.txt` and is excluded from versioning via `.gitignore`.  
 
-<<<<<<< HEAD
 ## To Do Plan
-=======
-<<<<<<< HEAD
-## To-Do Plan
-=======
-## To Do Plan
->>>>>>> 23a1b4b5d42170628092db9af02bb1f3edf48105
->>>>>>> 27c049106cae94119f5d61851ffb29d3a40fc6c2
   - add other D3 layout options and allow for switching them
   - ajax calls to the Meetup API: more events, paginate members and display while loading, etc.
     - local store of retrieved records (light-weight local DB) 
@@ -26,18 +18,10 @@ I assume there is a Python library out there already that handles calls to the M
 	- select another event and see attendees (positive RSVPs)
 	- etc.
 
-<<<<<<< HEAD
 The file `code\meetup.py` is a module whose functions should map directly to the Meetup API endpoints. So far, I have `getEventAttendees(event_id)` and `getMembers(group_id)` working. The basic use case is `import code.meetup as m` then `members = m.getMembers('1909691')`.
-=======
-<<<<<<< HEAD
-The file `code\meetup.py` is a module whose functions should map directly to the Meetup API endpoints. So far, I have `getEventAttendees(event_id)` and `getMembers(group_id)` working. The basic use case is `import code.meetup as m` then `members = m.getMembers('1909691')`.
-=======
 The file `code\meetup.py` is a module whose functions should map directly to the Meetup API endpoints. So far, I have `getEventAttendees(event_id)` and `getMembers(group_id)` working. The basic use case is 
         import code.meetup as m
 		members = m.getMembers('1909691')
->>>>>>> 23a1b4b5d42170628092db9af02bb1f3edf48105
-
->>>>>>> 27c049106cae94119f5d61851ffb29d3a40fc6c2
 
 ## From Mike's github [repo][dewar]: 
 >a talk aimed to try and get data scientists over that first hump of d3's learing curve and into the beautiful vista beyond...
