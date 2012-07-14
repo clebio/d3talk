@@ -49,6 +49,9 @@ def getMembers(group_id):
     people = _get_data('members', _params)
     members = []
     for person in people:
+        topics = []
+        for t in person['topics']:
+            topics.append({'name': t['name']})
         members.append({
                 "name": person['name'],
                 "photo_url": person['photo_url'],
@@ -58,7 +61,28 @@ def getMembers(group_id):
                 'city': person['city'],
                 'state': person['state'],
                 'profileLink': person['link'],
-                'topicCount': len(person['topics']) # list: { 'id', 'name', 'urlkey'}
+                'topicCount': len(person['topics']), # list: { 'id', 'name', 'urlkey'}
+                'topics': topics,
                 })
     json.dump(members, open(_basepath + 'json/groupMembers' + group_id + '.json','w'))
     return members
+
+def getEvents(group_id):
+    _params['group_id'] = group_id
+#    _params['after'] = '3m'
+    result = _get_data('events', _params)
+    events = []
+    for e in result:
+         event = []
+         for p in e:
+            event.append({
+                    p: e[p],
+                })
+         events.append(event)
+    json.dump(events, open(_basepath + 'json/groupEvents' + group_id + '.json','w'))
+    return events
+
+def getTopic(topicName):
+    _params['name'] = topicName
+    result = _get_data('topics', _params)
+    return result[0]

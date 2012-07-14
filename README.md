@@ -19,9 +19,6 @@ I assume there is a Python library out there already that handles calls to the M
 	- etc.
 
 The file `code\meetup.py` is a module whose functions should map directly to the Meetup API endpoints. So far, I have `getEventAttendees(event_id)` and `getMembers(group_id)` working. The basic use case is `import code.meetup as m` then `members = m.getMembers('1909691')`.
-The file `code\meetup.py` is a module whose functions should map directly to the Meetup API endpoints. So far, I have `getEventAttendees(event_id)` and `getMembers(group_id)` working. The basic use case is 
-        import code.meetup as m
-		members = m.getMembers('1909691')
 
 ## From Mike's github [repo][dewar]: 
 >a talk aimed to try and get data scientists over that first hump of d3's learing curve and into the beautiful vista beyond...
