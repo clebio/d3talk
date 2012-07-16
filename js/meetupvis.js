@@ -30,8 +30,9 @@ d3.json(
             .attr('y', 0)
             .attr('width', 100)
             .attr('height', 100)
+	    .attr('fill', 'blue')
 	    .attr('float', 'left')
-            .attr('xlink:href', function(d){return d.photo_url})                    
+            .attr('xlink:href', 'http://localhost:8000/assets/kitteh_crop.jpg') // function(d){return d.photo_url})                    
 
 
 	node.on("mouseover", function(d) {
@@ -41,6 +42,13 @@ d3.json(
 	node.on("mouseout", function(d) {
 	    d3.selectAll(".labels")
 		.remove()
+//	    d3.selectAll(".buttons")
+//		.remove()
+	})
+	
+
+	node.on("click", function(d) {
+	    addButtons(d, this);
 	})
 
         force.on("tick", function() {
@@ -49,7 +57,7 @@ d3.json(
                 function(d) { return "translate(" + d.x + "," + d.y + ")"; }
             );
         });
-        
+     
         d3.select("#graph").on("click", function() {
 	    d3.select(this)
 		.attr("width", 120)
@@ -57,6 +65,37 @@ d3.json(
 	    
             force.resume();
         });
+
     })
 
+    function addButtons(data, element) {
+	this.d = data;
+	this.e = element;
+
+	d3.select(e)
+ 	    .append('svg:text')
+	    .attr('class', 'buttons')
+	    .attr('fill', 'green')
+	    .attr('stroke', 'blue')
+
+	    .append('svg:tspan')
+	    .attr('class', 'buttons')
+	    .attr('x', 0)
+	    .attr('y', 50)
+	    .attr('width', 100)
+	    .attr('height', 40 )
+	    .text('click me!');
+		  
+	d3.select(e)
+	    .append('svg:rect')
+	    .attr('x', 0)
+	    .attr('y', 0)
+	    .attr('width', 100)
+	    .attr('height', 100)
+	    .attr('opacity', 0)
+	    .on("click", function(d) {
+//		TODO: call code.meetup.getMembers() or something of the sort.
+	    })
+
+    }
 })();
