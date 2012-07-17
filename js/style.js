@@ -9,7 +9,8 @@ function insertLabels(data, element) {
     p.removeChild(e);
     p.appendChild(n);
 
-    d3.select(e).append('svg:rect')
+    d3.select(e)
+ 	.append('svg:rect')
 	.attr('class', 'labels')
 	.attr('fill', 'black')
 	.attr('stroke', 'white')
