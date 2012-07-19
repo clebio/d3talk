@@ -51,7 +51,7 @@ for person in people:
         profile = get_data(url, params)[0]
         profiles.append(profile)
         if profile['photo_nodes'] != '':
-            url.append({
+            nodes.append({
                     "name": profile['name'],
                     "photo_url": profile['photo_url'],
                     'bio': profile['bio'],

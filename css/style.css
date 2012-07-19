@@ -18,6 +18,21 @@ p {
     
 }
 
+.buttons {
+    stroke: yellow;
+    fill: black;
+    font-size: 2em;
+}
+
+.info {
+    fill: black;
+    opacity: .85;
+}
+
+.labels {
+    fill: white;
+}
+
 #graph {
     border: 1px solid grey;
 }

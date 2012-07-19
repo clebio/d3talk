@@ -34,14 +34,14 @@ def _get_data(target, _params):
 def getEventAttendees(eventId):
     _params['event_id'] = eventId
     people = _get_data('rsvps', _params)
-    attendees = []
+    attendees = [] 
     for person in people:
         if person['response'] == "yes":
-            attendees.append({
-                    "name": person['name'],
-                    'member_id': person['member_id'],
-                    })
-    json.dump(attendees, open(_basepath + 'json/eventAttendees' + eventId + '.json','w'))
+            pers = {}
+            for p in person:
+                pers[p] =  person[p]
+            attendees.append(pers)
+    json.dump({'nodes': attendees,}, open(_basepath + 'json/eventAttendees' + eventId + '.json','w'))
     return attendees
 
 def getMembers(group_id):

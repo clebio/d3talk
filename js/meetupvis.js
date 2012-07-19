@@ -6,7 +6,8 @@ vis = d3.select("#graph")
 	.append("svg");
 
 d3.json(
-    'http://localhost:8000/json/pythonkc_hackr_event.json', 
+    'http://localhost:8000/json/eventAttendees60617252.json',
+//    'http://localhost:8000/json/pythonkc_hackr_event.json', 
     function(json){
         
         var force = d3.layout.force()
@@ -18,12 +19,11 @@ d3.json(
         var node = vis.selectAll("g")
             .data(json.nodes)
             .enter().append("g")  
-            .attr("id", function(d){ return d.name;})    
+            .attr("id", function(d){ return d.name.replace(" ", "-");})    
             .attr("class", "node")
             .attr("x", function(d) { return d.x; })
             .attr("y", function(d) { return d.y; })
             .call(force.drag);
-
 
 	node.append("svg:image")
             .attr('x', 0)
@@ -34,27 +34,23 @@ d3.json(
 	    .attr('float', 'left')
             .attr('xlink:href', 'http://localhost:8000/assets/kitteh_crop.jpg') // function(d){return d.photo_url})                    
 
-
 	node.on("mouseover", function(d) {
-	    insertLabels(d, this);
-	});
+	    d3.selectAll(".info").remove();
+	    addLabels(d, this);
+	});	
 
 	node.on("mouseout", function(d) {
-	    d3.selectAll(".labels")
-		.remove()
-//	    d3.selectAll(".buttons")
-//		.remove()
 	})
-	
 
-	node.on("click", function(d) {
+	node.on("click", function(d) {	
+	    d3.selectAll(".buttons").remove();
 	    addButtons(d, this);
 	})
 
         force.on("tick", function() {
             node.attr(
                 "transform", 
-                function(d) { return "translate(" + d.x + "," + d.y + ")"; }
+                function(d) { return "translate(" + Math.round(d.x) + "," + Math.round(d.y) + ")"; }
             );
         });
      
@@ -73,18 +69,14 @@ d3.json(
 	this.e = element;
 
 	d3.select(e)
- 	    .append('svg:text')
+	    .append('svg:text')
 	    .attr('class', 'buttons')
-	    .attr('fill', 'green')
-	    .attr('stroke', 'blue')
-
 	    .append('svg:tspan')
-	    .attr('class', 'buttons')
 	    .attr('x', 0)
-	    .attr('y', 50)
+	    .attr('y', '1em')
 	    .attr('width', 100)
-	    .attr('height', 40 )
-	    .text('click me!');
+	    .attr('height', '1em' )
+	    .text('info');
 		  
 	d3.select(e)
 	    .append('svg:rect')
@@ -98,4 +90,39 @@ d3.json(
 	    })
 
     }
+
+    function addLabels(data, element) {
+	this.e = element;
+	this.d = data;
+
+	// this is a hack to get the selected element front-most (highest z-index)
+	// svg elements don't, apparently, have a z-index, just the order of creation.
+	n = e;
+	p = e.parentNode;
+	p.removeChild(e);
+	p.appendChild(n);
+
+	d3.select(e)
+ 	    .append('svg:rect')
+	    .attr('class', 'info')
+	    .attr('x', 100)
+	    .attr('width', 10 * d.name.length + 'px') // (d.bio.length ? d.bio.length : d.name.length) + "px" )
+	    .attr('height', 100);
+
+	var ts = d3.select(e)
+	    .append("svg:text")
+	    .attr('class', 'labels info');
+	ts.append("svg:tspan")
+	    .attr('x', '100')
+	    .attr('width', 300)
+	    .attr('dy', '1em')
+	    .text(function(d) {return d.name});
+/*	ts.append("svg:tspan")
+	    .attr('x', '100')
+	    .attr('dy', '1em')
+	    .attr('width', 300)
+	.text(function(d) {return d.bio});
+*/
+}
+
 })();
